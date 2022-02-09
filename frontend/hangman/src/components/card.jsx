@@ -196,20 +196,9 @@ function ScreenSelector(props){
 
 
 
-function Card(props){
+function Card(){
     const [ screen, setScreen ] = useState(0);
-
-    const websocket = useContext(SocketContext);
-    const ws = websocket.ws;
-    const url = websocket.url;
-    const setWs = websocket.setWs;
-    //const { ws, url, setWs } = {websocket};
-
-    const resultProvider = useContext(ResultContext);
-    const result = resultProvider.result;
-    const setResult = resultProvider.setResult;
-
-    
+   
     function changeScreen(){
         var actual = screen + 1
 
@@ -222,9 +211,6 @@ function Card(props){
         setScreen(nextScreen)
     }
     
-    function StartGame(){
-        setScreen(1);
-    }
 
     return(
         <div className="card">
