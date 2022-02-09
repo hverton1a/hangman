@@ -1,0 +1,1 @@
+export const useSocket = new WebSocket("ws://192.168.0.208:5000/test-ws")

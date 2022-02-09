@@ -14,24 +14,7 @@ function PlayScreen(props){
 function WinScreen(props){
     return <h1>Aqui vc dá joga</h1>;
 }
-/*
-function Original(props){
-    return (
-        <div>
-        <h1>WebSocket Chat</h1>
-        <div>
-        <h2>Your ID: <span id="ws-id"></span></h2>
-        <button click="connect(event)"></button></div>
-        <form action="" onsubmit={event => sendMessage(event)}>
-        <input type="text" id="messageText" autocomplete="off"/>
-        <button>Send</button>
-        </form>
-        <ul id='messages'>
-        </ul>
-        </div> );
-    }
-    
-    */
+
    function Game(props){
        /*
        var ws = new WebSocket(`ws://localhost:5000/ws`);

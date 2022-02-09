@@ -1,14 +1,15 @@
 import Hang from './hang';
 import Stickman from './stickman';
+import './hangman.css';
 
 function Hangman(props) 
 {
-    return(<div>
-        <p>--inside --> {props.attempts}</p>
-        <svg width="40vw" height="50vh">
-            <Hang/>
-            <Stickman attempts={props.attempts}/>
-        </svg>
+    return(
+        <div class = "svg-wrapper">
+            <svg width="100%" height="100%">
+                <Hang/>
+                <Stickman attempts={props.attempts}/>
+            </svg>
         </div>
     )
 }

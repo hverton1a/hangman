@@ -1,10 +1,1 @@
-import { SocketContext }from "./socketProvider.jsx";
-import { useContext }from "react";
-
-export const useSocket = () =>{
-    const socket = useContext(SocketContext);
-
-    return socket;
-};
-
-// default useSocket;
+export const useSocket = new WebSocket("ws://192.168.0.208:5000/ws");

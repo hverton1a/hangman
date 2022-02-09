@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+lxml = "*"
+unidecode = "*"
+requests = "*"
+fastapi = "*"
+mysql-connector = "*"
+sqlalchemy = "*"
+uvicorn = {extras = ["standard"], version = "*"}
+pydantic = "*"
+alembic = "*"
+bs4 = "*"
+pytest = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"

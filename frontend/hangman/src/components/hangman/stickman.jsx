@@ -2,7 +2,7 @@
 function Eyes() 
 {
     return(
-        <svg id="eyes" x="10%" y="27%" width="67%" height="12%" >
+        <svg id="eyes" x="11%" y="27%" width="67%" height="12%" >
 			<line x1="5%" y1="30%" x2="55%" y2="30%" stroke="black" fill="black" strokeWidth="2.5%" /> 
 			<line x1="10%" y1="20%" x2="20%" y2="40%" stroke="black" fill="black" strokeWidth="2.5%" /> 
 			<line x1="20%" y1="20%" x2="10%" y2="40%" stroke="black" fill="black" strokeWidth="2.5%" />
@@ -23,14 +23,14 @@ function Mouth()
 function Head() 
 {
     return(
-        <circle id="head" cx="36%" cy="30%" r="12%"  stroke="black" strokeWidth="4" fill="none" />
+        <circle id="head" cx="37%" cy="30%" r="12%"  stroke="black" strokeWidth="4" fill="none" />
     )
 }
 
 function Torso() 
 {
     return(
-        <rect id="torso" x="33.3%" y="39%" width="8%" height="29%" stroke="black" fill="black" strokeWidth="0.5%" />
+        <rect id="torso" x="33.3%" y="39%" width="4%" height="29%" stroke="black" fill="black" strokeWidth="0.5%" />
     )
 }
 
