@@ -2,7 +2,6 @@ import { useContext} from 'react';
 
 import { ResultContext } from '../resultContext.jsx';
 
-
 function ResultScreen(props){
     const resultProvider = useContext(ResultContext);
     const result = resultProvider.result;
