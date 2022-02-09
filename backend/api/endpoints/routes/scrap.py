@@ -14,16 +14,19 @@ crud = Word_Crud(db=DBSession())
 
 # ! Implement an Authenticate and authorized requirement to access scraping
 
+
 @router.get('/list-recipes/')
 def get_recipe_list():
     return {"recipes":[recipe for recipe in catalog.keys()]}
 
 
 # TODO Implement a Pub/sub worker to handle the scraping and storing
-@router.get('/scrap-words/{recipe}')
+'''
+@router.post('/scrap-words/{recipe}')
 def scrap_words(recipe:str):
     scraper = Word_Scraper(catalog['Dicio'], BeautifulSoup)
 
     result = scraper.scrap_words()
     crud.add_many(result)
     return result
+'''

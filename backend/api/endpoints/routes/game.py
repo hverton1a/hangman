@@ -16,22 +16,21 @@ html = """
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Chat</title>
+        <title>Hangman Test Screen</title>
     </head>
     <body>
-        <h1>WebSocket Chat</h1>
-        <div><h2>Your ID: <span id="ws-id"></span></h2><button click="connect(event)"></button></div>
+        <h1>Hangman Test Screen</h1>
         <form action="" onsubmit="sendMessage(event)">
             <input type="text" id="messageText" autocomplete="off"/>
             <button>Send</button>
         </form>
+        <p> Digite a letra desejada, se for digitado mais de uma letra <br/>
+        será considerado apenas a primeira, caso seja iniciado com <br/>
+        qualquer outro caracter que nao seja uma letra será ignorado</p>
         <ul id='messages'>
         </ul>
         <script>
-            
-                var client_id = Date.now()
-                document.querySelector("#ws-id").textContent = client_id;
-                var ws = new WebSocket(`ws://localhost:5000/ws`);
+                var ws = new WebSocket(`ws://192.168.0.208:5000/ws`);
                 ws.onmessage = function(event) {
                     var messages = document.getElementById('messages')
                     var message = document.createElement('li')
@@ -73,18 +72,3 @@ async def websocket_endpoint(websocket: WebSocket, db:Session = Depends(get_db))
 
     finally:
         await websocket.close()
-
-    return RedirectResponse('/')
-
-
-
-@router.websocket("/test-ws")
-async def websocket_endpoint(websocket: WebSocket, db:Session = Depends(get_db)):
-    try:
-        await websocket.accept()
-        while True:
-            data = await websocket.receive_text()
-            await websocket.send_text(json.dumps({"message": data}))
-
-    finally:
-        print("Forced connection closed");

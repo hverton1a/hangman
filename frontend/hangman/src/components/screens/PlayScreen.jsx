@@ -31,7 +31,6 @@ function PlayScreen(props){
     const [ hiddenWord, setHiddenWord ] = useState(['Buscando Palavra ...']);
     const [ display, setDisplay ] = useState('hidden');
 
-    //const [ data, setData ] = useState('');
     const [ attempts, setAttempts ] = useState(0)
 
     const [guessed, setGuessed] = useState([]);
@@ -55,7 +54,6 @@ function PlayScreen(props){
             setHiddenWord(message.hidden_word);
         });
 
-    //const textInput = useRef(null);
 
     useEffect(()=>{
         ws.addEventListener("message", onMessage);
@@ -65,28 +63,10 @@ function PlayScreen(props){
         };
     },[ws, onMessage]);
 
-
-/*
-    function updateData(e)
-    {
-        setData(e.target.value)        
-    }
-
-    function handle_data(e){
-        ws.send(data);
-        //textInput.current.value = '';
-    }
-    function handleKeyPress(e){
-        if (e.key === 'Enter')
-        {
-            handle_data(e);
-        }
-    }*/
-
     return (
         <div>
             <h2>Hangman Game</h2>
-            <h3>Try to hit the hidden word, guessing it´s letters.</h3>
+            <h3>Tente DEscobrir a palavra.</h3>
             <Hangman attempts={attempts}/>
             <HiddenWord word={hiddenWord}/>
             <LetterTiles display={display} 
