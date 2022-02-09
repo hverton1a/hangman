@@ -1,20 +1,21 @@
 import React, { useState, useEffect, useCallback, useRef, useContext} from 'react';
-import { SocketContext } from './socketContext.jsx';
-import { ResultContext } from './resultContext.jsx';
-import LetterTiles from './LetterTiles';
-import HiddenWord from './HiddenWord';
 import './card.css';
 
+import { SocketContext } from './socketContext.jsx';
+import { ResultContext } from './resultContext.jsx';
+
+import LetterTiles from './LetterTiles';
+import HiddenWord from './HiddenWord';
+import ScreenSelector from './screens/ScreenSelector';
 import Hangman from './hangman/hangman';
 
-const letterList = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split("");
 
 
 // ! refatorar usestate para usereducer
 // ! refatorar as screens em varios arquivos
 // ! refatorar o componente playscreen
 // ! limpeza geral
-
+/*
 function StartScreen(props){
     const websocket = useContext(SocketContext);
     
@@ -31,9 +32,9 @@ function StartScreen(props){
             </button>
         </div>
     );
-}
+}*/
 
-
+/*
 function PlayScreen(props){
     const websocket = useContext(SocketContext);
 
@@ -147,10 +148,10 @@ function PlayScreen(props){
                         state={guessed}/>
         </div>
     );
-}
+}*/
 
 
-
+/*
 function ResultScreen(props){
     const websocket = useContext(SocketContext);
     //const { ws, url, setWs } = {websocket};
@@ -169,9 +170,9 @@ function ResultScreen(props){
             <button onClick = { (e)=>{ props.changer(0);}}>Go To Home</button>
         </div>
     )
-}
+}*/
 
-
+/*/
 function ScreenSelector(props){
     
     var screen = [
@@ -192,16 +193,12 @@ function ScreenSelector(props){
             ];
 
     return screen[props.screen];
-}
+}*/
 
 
 
 function Card(){
     const [ screen, setScreen ] = useState(0);
-   
-    function changer(nextScreen){
-        setScreen(nextScreen)
-    }
     
     return(
         <div className="card">        

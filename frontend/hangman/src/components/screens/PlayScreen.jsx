@@ -1,34 +1,47 @@
-import React, { useState, useEffect, useCallback, useRef, useContext} from 'react';
-import { SocketContext } from './socketContext.jsx';
-import { ResultContext } from './resultContext.jsx';
+import { useState, useEffect, useCallback, useRef, useContext} from 'react';
+import { SocketContext } from '../socketContext.jsx';
+import { ResultContext } from '../resultContext.jsx';
 
-import { useSocket } from "./useSocket";
-
-import Hangman from './hangman/hangman';
+import Hangman from '../hangman/hangman';
+import HiddenWord from '../HiddenWord';
+import LetterTiles from '../LetterTiles';
 
 function PlayScreen(props){
     const websocket = useContext(SocketContext);
-    const socket = websocket.ws;
+
+    var ws = websocket.ws;
+    const url = websocket.url;
     const setWs = websocket.setWs;
-
+    
+    
     const resultProvider = useContext(ResultContext);
-    const result = resultProvider.result;
     const setResult = resultProvider.setResult;
+    
 
+    const [ hiddenWord, setHiddenWord ] = useState([]);
+    const [ display, setDisplay ] = useState('hidden');
 
-    //const socket = props.socket;
-
-    socket.send(' ')
+    useEffect(()=>{
+        if ((!websocket.ws)||(websocket.ws.readyState > 1))
+        {
+            ws = new WebSocket(url);
+            setWs(ws);
+        }
+        ws.onopen = () =>{ ws.send(' ');
+                            setDisplay('visible');}
+        
+        },[]);
 
     const [ data, setData ] = useState('');
-    const [ response, setResponse ] = useState(socket.data);
+    const [ response, setResponse ] = useState(data);
     const [ attempts, setAttempts ] = useState(0)
 
-    //const onClose = useCallback(() => socket)
+    const [guessed, setGuessed] = useState([]);
+
 
     const onMessage = useCallback((message)=>{
         message = JSON.parse(message.data);
-        //console.log("data ->", message);
+
         var attempts = message.max_attempts - message.num_guesses
         var info = (' -> ' + message.hidden_word + '       You Guesses: ' + message.guessed 
                 + ' You have: ' +  attempts
@@ -41,7 +54,7 @@ function PlayScreen(props){
                     
                     setResult(message.word);
 
-                    socket.close();
+                    ws.close();
 
                     props.changer(2);
                 }else if(message.state_index === 3)
@@ -52,7 +65,7 @@ function PlayScreen(props){
                     setResult(message.word);
 
 
-                    socket.close();
+                    ws.close();
                     props.changer(3);                                                
                 }else  if(message.state_index === 1)
                 {
@@ -60,18 +73,19 @@ function PlayScreen(props){
                 }
         setResponse(info);
         setAttempts(message.num_guesses);
+        setGuessed(message.guessed);
+        setHiddenWord(message.hidden_word);
                                         });
 
     const textInput = useRef(null);
 
-
     useEffect(()=>{
-        socket.addEventListener("message", onMessage);
+        ws.addEventListener("message", onMessage);
 
         return ()=>{
-            socket.removeEventListener("message", onMessage);
+            ws.removeEventListener("message", onMessage);
         };
-    },[socket, onMessage]);
+    },[ws, onMessage]);
 
 
     function updateData(e)
@@ -79,12 +93,8 @@ function PlayScreen(props){
         setData(e.target.value)        
     }
 
-    function sendText(e){
-        socket.send(e.target.value)
-    }
-
     function handle_data(e){
-        socket.send(data);
+        ws.send(data);
         textInput.current.value = '';
     }
 
@@ -97,14 +107,14 @@ function PlayScreen(props){
 
     return (
         <div>
-            <h1>Aqui vc joga</h1>
-            <p>{response}</p>
+            <h2>Hangman Game</h2>
+            <h3>Try to hit the hidden word, guessing it´s letters.</h3>
             <Hangman attempts={attempts}/>
-            <input type="text" 
-                    ref={textInput} 
-                    onChange = { (e)=> updateData(e) }
-                    onKeyPress={(e)=> handleKeyPress(e)}></input>
-            <button onClick = { (e)=> handle_data(e) }>SEND</button>
+            <HiddenWord word={hiddenWord}/>
+            <LetterTiles display={display} 
+                        letterlist={ 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split("")} 
+                        func={(value)=>{ws.send(value);}}
+                        state={guessed}/>
         </div>
     );
 }

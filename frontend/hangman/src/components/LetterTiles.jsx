@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './LetterTiles.css';
 
+
 function LetterButton(props)
 {
     return <button className="letters" style={{visibility: props.display}}
@@ -13,23 +14,18 @@ function LetterButton(props)
 function LetterTiles(props)
 {
     useEffect(()=>{console.log("letterTiles list -> ", props.list)},[]);
-    //const [state, setState]=useState(props.state)
-    //
-    //function show(){
-    //    setDisplay('visible');
-    //}
 
     return (
             <div className='letter-tiles'>                  
                 {
-                    props.list.map(
+                    props.letterlist.map(
                         (el,i)=> 
-                        <LetterButton key={ i.toString() + props.list[i] } 
-                                      click={(content)=>{console.log(props.list[i])}}
-                                      content={props.list[i]}
+                        <LetterButton key={ i.toString() + props.letterlist[i] } 
+                                      click={(content)=>{console.log(props.letterlist[i])}}
+                                      content={props.letterlist[i]}
                                       guess={(value)=>{props.func(value);}}
                                       display={props.display}
-                                      disabled={(props.state.includes(props.list[i]))}
+                                      disabled={(props.state.includes(props.letterlist[i]))}
                                       />
                                     )
                 }

@@ -1,11 +1,15 @@
 function StartScreen(props){
     return (
         <div>
-            <h1>Aqui vc dá play no jogo</h1>
+            <h2>Bem vindo ao Hangman</h2>
+            <h3>Um jogo onde vc tenta adivinhar uma palavra oculta</h3>
+            <h3>Chutando as letras do alfabeto</h3>
             <br/>
-            <button onClick={()=>{props.click()}}>Start the Game</button>
+            <button onClick={()=>{ props.changer(1)}}>
+                        Iniciar Jogo !
+            </button>
         </div>
     );
 }
 
-export default StartScreen;
+export default( StartScreen );

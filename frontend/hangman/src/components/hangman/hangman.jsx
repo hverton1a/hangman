@@ -15,4 +15,4 @@ function Hangman(props)
 }
 
 
-export default Hangman
+export default Hangman;
