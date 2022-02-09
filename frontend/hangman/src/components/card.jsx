@@ -199,24 +199,14 @@ function ScreenSelector(props){
 function Card(){
     const [ screen, setScreen ] = useState(0);
    
-    function changeScreen(){
-        var actual = screen + 1
-
-        if (actual > 3) {  actual = 0 ; }
-        
-        setScreen(actual);
-    }
-
     function changer(nextScreen){
         setScreen(nextScreen)
     }
     
-
     return(
-        <div className="card">
-            <button onClick={changeScreen}>CS</button>         
+        <div className="card">        
             <ScreenSelector 
-                changer={(nextScreen)=>{changer(nextScreen);}}
+                changer={(nextScreen)=>{setScreen(nextScreen);}}
                 screen={screen}
             />
         </div>
