@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './HiddenWord.css';
+import '../styles/HiddenWord.css';
 
 function HiddenWord(props)
 {

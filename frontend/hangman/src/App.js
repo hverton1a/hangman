@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
 import Card from './components/card';
 import { SocketProvider } from './components/socketContext';
 import { ResultProvider } from './components/resultContext';

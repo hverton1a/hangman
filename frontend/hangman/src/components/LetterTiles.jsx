@@ -1,4 +1,4 @@
-import './LetterTiles.css';
+import '../styles/LetterTiles.css';
 
 
 function LetterButton(props)

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './card.css';
+import '../styles/card.css';
 
 import ScreenSelector from './screens/ScreenSelector';
 
