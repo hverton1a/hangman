@@ -14,5 +14,4 @@ function Hangman(props)
     )
 }
 
-
 export default Hangman;

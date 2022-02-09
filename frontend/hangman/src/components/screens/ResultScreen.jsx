@@ -11,8 +11,8 @@ function ResultScreen(props){
         <div>
             <h1>{props.message}</h1>
             <h2>A Palavra era {result}</h2>
-            <button onClick = { ()=>{  props.changer(1);}}>Play Again!</button>
-            <button onClick = { (e)=>{ props.changer(0);}}>Go To Home</button>
+            <button onClick = { ()=>{  props.changer(1);}}>Jogar Novamente!</button>
+            <button onClick = { (e)=>{ props.changer(0);}}>Home</button>
         </div>
     )
 }

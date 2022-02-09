@@ -18,7 +18,7 @@ function PlayScreen(props){
     const setResult = resultProvider.setResult;
     
 
-    const [ hiddenWord, setHiddenWord ] = useState([]);
+    const [ hiddenWord, setHiddenWord ] = useState(['Buscando Palavra ...']);
     const [ display, setDisplay ] = useState('hidden');
 
     useEffect(()=>{
@@ -33,7 +33,7 @@ function PlayScreen(props){
         },[]);
 
     const [ data, setData ] = useState('');
-    const [ response, setResponse ] = useState(data);
+    //const [ response, setResponse ] = useState(data);
     const [ attempts, setAttempts ] = useState(0)
 
     const [guessed, setGuessed] = useState([]);
@@ -42,15 +42,15 @@ function PlayScreen(props){
     const onMessage = useCallback((message)=>{
         message = JSON.parse(message.data);
 
-        var attempts = message.max_attempts - message.num_guesses
-        var info = (' -> ' + message.hidden_word + '       You Guesses: ' + message.guessed 
+        //var attempts = message.max_attempts - message.num_guesses
+       /* var info = (' -> ' + message.hidden_word + '       You Guesses: ' + message.guessed 
                 + ' You have: ' +  attempts
                 + ' guesses left')
-                
+                */
                 if(message.state_index === 2)
                 {
-                    info += ' '+ message.word;
-                    info = message.state+' '+info;
+                    //info += ' '+ message.word;
+                    //info = message.state+' '+info;
                     
                     setResult(message.word);
 
@@ -59,19 +59,17 @@ function PlayScreen(props){
                     props.changer(2);
                 }else if(message.state_index === 3)
                 {
-                    info += ' '+ message.word;
-                    info = message.state+' '+info;
+                    //info += ' '+ message.word;
+                    //info = message.state+' '+info;
 
                     setResult(message.word);
-
-
                     ws.close();
                     props.changer(3);                                                
-                }else  if(message.state_index === 1)
+                }/*else  if(message.state_index === 1)
                 {
                     console.log("you are playing");
-                }
-        setResponse(info);
+                }*/
+        //setResponse(info);
         setAttempts(message.num_guesses);
         setGuessed(message.guessed);
         setHiddenWord(message.hidden_word);
