@@ -1,9 +1,10 @@
 import { createContext, useState } from 'react';
+//require('dotenv').config();
 
 export const SocketContext = createContext();
 
 export const SocketProvider = ({children})=>{
-    const [ url, setUrl ] = useState("ws://192.168.0.208:5000/ws");
+    const [ url, setUrl ] = useState(process.env.REACT_APP_WS_URL);
     const [ ws, setWs ] = useState(null);
 
     return (

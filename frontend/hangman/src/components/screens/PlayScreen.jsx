@@ -8,7 +8,6 @@ import LetterTiles from '../LetterTiles';
 
 function PlayScreen(props){
     const websocket = useContext(SocketContext);
-
     var ws = websocket.ws;
     const url = websocket.url;
     const setWs = websocket.setWs;
@@ -23,16 +22,12 @@ function PlayScreen(props){
             setDisplay('visible');}
         },[]);
     
-
     const resultProvider = useContext(ResultContext);
     const setResult = resultProvider.setResult;
 
-
     const [ hiddenWord, setHiddenWord ] = useState(['Buscando Palavra ...']);
     const [ display, setDisplay ] = useState('hidden');
-
-    const [ attempts, setAttempts ] = useState(0)
-
+    const [ attempts, setAttempts ] = useState(0);
     const [guessed, setGuessed] = useState([]);
 
     const onMessage = useCallback((message)=>{
