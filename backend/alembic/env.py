@@ -23,7 +23,7 @@ fileConfig(config.config_file_name)
 
 # ! from models.user import *
 from models.word_model import *
-from models.fake_models import *
+# from models.fake_models import *
 
 target_metadata = Base.metadata
 
