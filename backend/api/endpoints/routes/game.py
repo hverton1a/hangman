@@ -1,6 +1,5 @@
-from fastapi import APIRouter, WebSocket, Query, Cookie, Depends, WebSocketDisconnect
-from fastapi.responses import HTMLResponse,  RedirectResponse
-from typing import Optional
+from fastapi import APIRouter, WebSocket, Depends
+from fastapi.responses import HTMLResponse
 
 from sqlalchemy.orm import Session
 

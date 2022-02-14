@@ -152,6 +152,3 @@ class Word_Crud(Crud):
 
         return query
 
-
-    def parse_Word_Out():
-        pass
