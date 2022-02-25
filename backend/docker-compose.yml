@@ -1,0 +1,96 @@
+version: "3"
+
+services:
+  hangman:
+    image: python:3.8-buster
+    container_name: hangman-python38
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: bash -c 
+        "git clone https://github.com/hverton1a/hangman.git && pip install -r ./hangman/backend/requirements.txt && cd ./hangman/backend && python -m main" # tail -f /dev/null
+    ports:
+      - 5001:5000
+    networks:
+      - db-net
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - DB_PORT=${DB_PORT}
+      - DB_DIALECT=${DB_DIALECT}
+      - VIRTUAL_HOST=${DOMAIN}
+      - VIRTUAL_PORT=${DOMAIN_PORT}
+      - LETSENCRYPT_HOST=${DOMAIN}
+    restart: always
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysqldb-a 
+    hostname: mysql    
+    volumes:
+      - "db-data:/var/lib/mysql"
+      - "db-conf:/etc/mysql/conf.d"
+    ports:
+      - 3308:3306
+    networks:
+      db-net:
+        aliases:
+            - mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
+      
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - conf:/etc/nginx/conf.d
+      - vhost:/etc/nginx/vhost.d
+      - dhparam:/etc/nginx/dhparam
+      - certs:/etc/nginx/certs:ro
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - /usr/share/nginx/html
+    networks:
+      - proxy
+    restart: always
+     
+
+  letsencrypt:
+    image: nginxproxy/acme-companion
+    container_name: nginx-proxy-le
+    volumes_from:
+      - nginx-proxy
+    volumes:
+      - certs:/etc/nginx/certs:rw
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - acme:/etc/acme.sh
+    restart: always      
+      
+volumes:
+  db-data:
+    name: db-data
+  db-conf:
+    name: db-conf
+  conf:
+    name: conf
+  vhost:
+    name: vhost
+  dhparam:
+    name: dhparam
+  certs:
+    name: certs
+    
+    
+networks:
+  db-net:
+    driver: bridge
+  proxy:
+    external:
+      name: nginx-proxy
+

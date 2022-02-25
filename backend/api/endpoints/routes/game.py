@@ -28,8 +28,9 @@ html = """
         qualquer outro caracter que nao seja uma letra será ignorado</p>
         <ul id='messages'>
         </ul>
+                <!--//var ws = new WebSocket(`ws://192.168.0.208:5000/ws`);-->
         <script>
-                var ws = new WebSocket(`ws://192.168.0.208:5000/ws`);
+				var ws = new WebSocket(`ws://horvat-projects.xyz:8080/ws`);
                 ws.onmessage = function(event) {
                     var messages = document.getElementById('messages')
                     var message = document.createElement('li')
