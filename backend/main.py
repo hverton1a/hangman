@@ -18,4 +18,10 @@ def health_check(db:Session = Depends(get_db)):
 
 
 if __name__ == '__main__':
+    try:
+        DOMAIN_PORT=int(DOMAIN_PORT)
+    except:
+        print("invalid domain port, using default 3000")
+        DOMAIN_PORT=3000
+
     uvicorn.run("main:app", host="0.0.0.0", port=DOMAIN_PORT, reload=True)
