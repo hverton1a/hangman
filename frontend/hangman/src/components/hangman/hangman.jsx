@@ -1,7 +1,7 @@
 import Hang from './Hang';
 import Stickman from './Stickman';
 import '../../styles/Hangman.css';
-
+ 
 function Hangman(props) 
 {
     return(

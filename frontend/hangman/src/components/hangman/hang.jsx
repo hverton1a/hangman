@@ -11,5 +11,5 @@ function Hang()
         </svg>
     )
 }
-
+ 
 export default Hang;

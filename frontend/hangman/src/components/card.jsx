@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import '../styles/Card.css';
-
+ 
 import ScreenSelector from './screens/ScreenSelector';
 
 function Card(){
