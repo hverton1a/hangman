@@ -1,11 +1,11 @@
-import Hang from './hang';
-import Stickman from './stickman';
-import '../../styles/hangman.css';
+import Hang from './Hang';
+import Stickman from './Stickman';
+import '../../styles/Hangman.css';
 
 function Hangman(props) 
 {
     return(
-        <div class = "svg-wrapper">
+        <div className= "svg-wrapper">
             <svg width="100%" height="100%">
                 <Hang/>
                 <Stickman attempts={props.attempts}/>

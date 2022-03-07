@@ -1,14 +1,11 @@
-import logo from './logo.svg';
 import './styles/App.css';
-import Card from './components/card';
-import { SocketProvider } from './components/socketContext';
-import { ResultProvider } from './components/resultContext';
+import Card from './components/Card';
+import { SocketProvider } from './components/SocketContext';
+import { ResultProvider } from './components/ResultContext';
 
-//import { TesteCon } from './components/hangman/testSocket';
 
 
 function App() {
-  //const ws = new WebSocket("ws://localhost:5000/ws");
   
   return (
       <div className="App">

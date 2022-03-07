@@ -1,4 +1,4 @@
-import {useState, createContext, ReactChild} from 'react';
+import { useState, createContext } from 'react';
 
 export const ResultContext = createContext();
 

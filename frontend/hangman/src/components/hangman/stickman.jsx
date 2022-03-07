@@ -2,7 +2,7 @@
 function Eyes() 
 {
     return(
-        <svg id="eyes" x="11%" y="27%" width="67%" height="12%" >
+        <svg id="eyes" x="23%" y="27%" width="47%" height="12%" >
 			<line x1="5%" y1="30%" x2="55%" y2="30%" stroke="black" fill="black" strokeWidth="2.5%" /> 
 			<line x1="10%" y1="20%" x2="20%" y2="40%" stroke="black" fill="black" strokeWidth="2.5%" /> 
 			<line x1="20%" y1="20%" x2="10%" y2="40%" stroke="black" fill="black" strokeWidth="2.5%" />
@@ -15,7 +15,7 @@ function Eyes()
 function Mouth() 
 {
 
-    return 	(<svg id="mouth" x="20%" y="29%" width="30%" height="8%"  >
+    return 	(<svg id="mouth" x="28%" y="29%" width="20%" height="8%"  >
                 <ellipse cx="40%" cy="98%" rx="60%" ry="20%" stroke="black" fill="none"  strokeWidth="5%" />
             </svg>)
 }
@@ -23,14 +23,14 @@ function Mouth()
 function Head() 
 {
     return(
-        <circle id="head" cx="37%" cy="30%" r="12%"  stroke="black" strokeWidth="4" fill="none" />
+        <circle id="head" cx="38%" cy="30%" r="12%"  stroke="black" strokeWidth="4" fill="none" />
     )
 }
 
 function Torso() 
 {
     return(
-        <rect id="torso" x="33.3%" y="39%" width="4%" height="29%" stroke="black" fill="black" strokeWidth="0.5%" />
+        <rect id="torso" x="36%" y="39%" width="4%" height="29%" stroke="black" fill="black" strokeWidth="0.5%" />
     )
 }
 

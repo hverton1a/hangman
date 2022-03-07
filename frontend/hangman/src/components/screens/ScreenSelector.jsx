@@ -1,6 +1,7 @@
 import StartScreen from './StartScreen';
 import PlayScreen from './PlayScreen';
 import ResultScreen from './ResultScreen';
+import ErrorScreen from './ErrorScreen';
 
 function ScreenSelector(props){
     
@@ -18,7 +19,11 @@ function ScreenSelector(props){
                     <ResultScreen 
                         message="Ixe, Você Perdeu!" 
                         changer={(nextScreen)=>{props.changer(nextScreen);}}
-                    />
+                    />,
+                    <ErrorScreen 
+                    message="Houve um erro ao conectar ao servidor,tente novamente mais tarde!" 
+                    changer={(nextScreen)=>{props.changer(nextScreen);}}
+                />
             ];
 
     return screen[props.screen];
