@@ -1,0 +1,54 @@
+version: "3.7"
+
+services:
+  hangman:
+    image: python:3.8-buster
+    container_name: hangman-python38
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: bash -c 
+        "[ ! -d "/app/hangman" ] && git clone https://github.com/hverton1a/hangman.git ; pip install -r ./hangman/backend/requirements.txt ; cd ./hangman/backend && python -m main" # tail -f /dev/null
+    ports:
+      - ${DOMAIN_PORT}:${DOMAIN_PORT}
+    networks:
+      - db-net
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - DB_PORT=${DB_PORT}
+      - DB_DIALECT=${DB_DIALECT}
+      - VIRTUAL_HOST=${DOMAIN}
+      - VIRTUAL_PORT=${DOMAIN_PORT}
+      - LETSENCRYPT_HOST=${DOMAIN}
+    restart: always
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysqldb
+    hostname: mysql    
+    volumes:
+      - db-data:/var/lib/mysql
+      - db-conf:/etc/mysql/conf.d
+    ports:
+      - ${DB_PORT}:3306
+    networks:
+      db-net:
+        aliases:
+            - mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
+      
+volumes:
+  db-data:
+    name: db-data
+  db-conf:
+    name: db-conf
+    
+networks:
+  db-net:
+    driver: bridge

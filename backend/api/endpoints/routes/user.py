@@ -1,3 +1,9 @@
+'''
+    TODO Implement User Authentication and User REgistration
+    **This file is not been used yet.
+    **It is just a Template
+'''
+
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from db.database import get_db

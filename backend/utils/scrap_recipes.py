@@ -31,5 +31,6 @@ class Recipes:
             catalog[recipe.__name__] = recipe
             return catalog
 
+
 recipes = Recipes(recipe_list)
 catalog = recipes.catalog

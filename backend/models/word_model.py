@@ -13,7 +13,6 @@ class Word(Base):
 
     language_id = Column(Integer, ForeignKey("language.id", ondelete="CASCADE"))
 
-    #language = relationship("Language"")
     statistics = relationship("Statistics", 
                                 backref="word",
                                 lazy=True,
@@ -44,10 +43,6 @@ class Statistics(Base):
 
     word_id = Column(Integer, ForeignKey("word.id", ondelete="CASCADE"))
 
-    #word = relationship("Word", 
-    #                        back_populates="statistics",
-    #                        lazy=True)
-
 
 class Hints(Base):
     __tablename__ = "hints"
@@ -56,6 +51,3 @@ class Hints(Base):
     hint = Column(String(200))
     
     word_id = Column(Integer, ForeignKey("word.id", ondelete="CASCADE"))
-
-    #word = relationship("Word", 
-    #                        back_populates="hints")

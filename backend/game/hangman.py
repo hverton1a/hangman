@@ -15,6 +15,8 @@ class State:
 
 class Loop_Obj:
     ''' 
+    Main Game Loop Object.
+    Set initial state and handle json parse.
     '''
     def __init__(self, word:Word, attempts:int = 8):
         self.hidden_word = ['_' for i in range(0, word.letters) ]

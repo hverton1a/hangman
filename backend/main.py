@@ -1,21 +1,50 @@
-from typing import Any
-from fastapi import FastAPI, Depends
-from db.database import get_db
-from sqlalchemy.orm import Session
-from config.settings import DOMAIN_PORT
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 import uvicorn
 
 from api.endpoints.router import router
+from config.settings import DOMAIN_PORT
+description = """
+Hangman API.
 
-app = FastAPI()
+BackEnd for a Hangman Game.
 
-# TODO refactor all endpoints to routes and include to router
+Developed with Docker, Python (FastAPI,
+SqlAlchemy, Alembic, Pydantic) 
+Mysql.
+
+
+The game is served by a websocket connection, 
+and http for the others endpoints
+
+
+You will be able to:
+
+#Play An Awesome Hangman Game, with a Random Word.
+
+At this point only Portuguese Words are available, scrapped
+from  Dico - https://www.dicio.com.br.
+
+The WordScrapper implemmented can be customized with various "Recipes",
+enabling scrap another dictionary sites/api of any alphabetic
+language.
+
+* **Create users** (_not implemented_).
+* **Read users** (_not implemented_).
+"""
+
+app = FastAPI(
+    title="Hangman Game",
+    description=description,
+    version="0.8.0",
+    contact={
+        "name": "Hangman Game API",
+        "url": "https://hangman-chi.vercel.app/",
+        "email": "hev.dev.proj@gmail.com",
+    }
+)
+app.mount("/static", StaticFiles(directory='static'), name='static')
 app.include_router(router)
-
-@app.get('/')
-def health_check(db:Session = Depends(get_db)):
-    return {"message" : "It's All Good Man"}
-
 
 if __name__ == '__main__':
     try:

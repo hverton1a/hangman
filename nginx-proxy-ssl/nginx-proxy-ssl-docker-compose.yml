@@ -1,0 +1,22 @@
+version: "3.4"
+
+services:
+	web:
+		image: nginx:1.14.2-alpine
+		restart: always
+		volumes:
+			- ./public_html:/public_html
+			- ./conf.d:/etc/nginx/conf.d
+			- ./certbot/conf:/etc/nginx/ssl
+			- ./dhparam/conf:/etc/nginx/dhparam
+			- ./certbot/data:/usr/share/nginx/html/letsencrypt
+		ports:
+			- 80:80
+			- 443:443
+	certbot:
+		image: certbot/certbot:latest
+		command: certonly --webroot --webroot-path=/usr/share/nginx/html/letsencrypt --email email@example.com --agree-tos --no-eff-emal -d example.com -d www.example.com
+		volumes:
+			- ./certbot/conf:/etc/letsencrypt
+			- ./certobot/logs:/var/log/letsencrypt
+			- ./certobt/data:/usr/share/nginx/html/letsencrypt

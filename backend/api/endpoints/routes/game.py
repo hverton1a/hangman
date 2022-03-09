@@ -1,12 +1,11 @@
 from fastapi import APIRouter, WebSocket, Depends
 from fastapi.responses import HTMLResponse
-
 from sqlalchemy.orm import Session
 
 from db.database import get_db
-import json
-
 from game.hangman import Game
+
+import json
 
 router = APIRouter()
 
@@ -28,9 +27,8 @@ html = """
         qualquer outro caracter que nao seja uma letra será ignorado</p>
         <ul id='messages'>
         </ul>
-                <!--//var ws = new WebSocket(`ws://192.168.0.208:5000/ws`);-->
         <script>
-				var ws = new WebSocket(`ws://horvat-projects.xyz:8080/ws`);
+				var ws = new WebSocket(`ws://horvat-projects.xyz/ws`);
                 ws.onmessage = function(event) {
                     var messages = document.getElementById('messages')
                     var message = document.createElement('li')
@@ -51,13 +49,20 @@ html = """
 """
 
 
-@router.get("/html-ws")
-async def get():
+@router.get("/html-ws-test-page")
+async def get_html_test_page():
+    '''
+    API Endpoint with a simple html ,
+    for testing without a external frontend.
+    '''
     return HTMLResponse(html)
 
 
 @router.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket, db:Session = Depends(get_db)):
+    '''
+    Websocket Endpoit for the Hangman game loop.
+    '''
     try:
         await websocket.accept()
         game = Game(db=db)

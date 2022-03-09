@@ -109,10 +109,12 @@ class Word_Crud(Crud):
         return self.db.query(Language).all()
         
 
+
     def get_language(self, language:str):
         return (self.db.query(Language)
                 .filter(Language.language == language)).first()
     
+
     def get_language_by_id(self, id:int):
         return (self.db.query(Language)
             .filter(Language.id == id)).first()

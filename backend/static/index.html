@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./static/index.css">
+    <title>Hangman API</title>
+</head>
+<body>
+    <div class="wrapper">
+        <H1>Hangman API's Presentation.</H1>
+        <H2>The API</H2>
+        <div>
+            <p>
+                Developed with python, using the <a href="https://https://fastapi.tiangolo.com/" >FastAPI</a> framework.
+            </p>
+            <p>There is a simple ReactJs available at Vercel, <a href="https://hangman-chi.vercel.app/">PLAY NOW!</a></p>
+            <p>For the Doc/Swagger <a href="https://horvat-projects.xyz/redoc">check here</a></p>
+            <p>Have a Look at <a href="https://github.com/hverton1a/hangman">Github</a></p>
+            <p>The words are scraped from the web and stored in a dockerized Mysql Server DB.
+            <p>Designed to be multi-language, storing original and sanitarized form, only dependant to be alphabetical.</p>
+            <p>Although only word in portuguese are available at the moment.</p>
+            <p>The Container whare deployed at a <a href ="https://cloud.google.com/">GCP - Google Cloud - </a> VPS instance, with docker-compose.</p>
+            <p>To Handle Tsl and serve HTTPS/WSS for secure connetions
+            Whas span up a <a href="https://www.nginx.com/" >NGINX</a> <a href="https://hub.docker.com/_/nginx">Docker container</a> as reverse proxy with a <a href="https://certbot.eff.org/">Certbot</a> <a href= "https://hub.docker.com/r/certbot/certbot">Docker container</a>
+            to handle with <a href="https://letsencrypt.org/">LetsEncript </a> the certificates.</p>
+            <p>The workflow was dockerized, coded remotely inside the container.</p>
+            <p>Features: 
+                <ul>
+                    <li>Modular Word Scrapper
+                        <p>get the word from dictionary site or api
+                        implemented with recipes, being flexible and ease to
+                        aquire word from another sources, just add the recipe and the scrape will deal with it.</p></li>
+                    <li>dockerized
+                    <p>Speeding up the deployment and scale</p></li>
+                    <li>Designed to be Alphabet dependant, but not language dependant
+                        <p>The Word Table was designed to receive sanitarized
+                        and original word forms, and the language was designed one-to-many relationship.</p>
+                    </li>
+                </ul>
+                <p>It´s still in development, at the moment it´s not possivel to create or log in a user, also the game statistics was not implemented.</p>
+            <p>There is a simple ReactJs available at Vercel, give a try!</p>
+            <button class="play" onclick="window.location.href='https://hangman-chi.vercel.app/'">PLAY NOW!</button>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

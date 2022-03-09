@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 
 
 load_dotenv(".env")
+
 DB_PASSWORD=os.getenv("DB_PASSWORD")
 DB_DIALECT=os.getenv("DB_DIALECT")
 DB_USER=os.getenv("DB_USER")
@@ -27,6 +28,7 @@ class Scraper(BaseSettings):
 
     INVALID_LANGUAGE_MESSAGE = 'Invalid language. \n' + \
                              f'The accepted languages are: {VALID_LANGUAGES}'
+
 
 sqlalchemy_cfg = SQLAlchemy()
 scraper_cfg = Scraper()
