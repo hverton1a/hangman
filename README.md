@@ -5,14 +5,17 @@ A game where you have to guess a hidden word.
 API and Frontend, with connection via websocket.
 _____
 
-Check the API [HERE](https://horvat-projects.xyz).
+Check the [ API Page HERE ](https://horvat-projects.xyz).
 
 And Play it [HERE](https://hangman-chi.vercel.app/).
 
 _________
 
-Word scraped from sites and apis , implemented with recipes, giving flexibility, making ease to aquire words from another sources, just add the recipe and the scrape will deal with it.
-
+Word scraped from sites and apis , implemented with recipes, giving flexibility, making ease to aquire and update words from another sources, just add the recipe and the scraper will deal with it.
+Designed to be multi-language, storing words in a original and sanitarized form, only dependant to be alphabetical.
+The workflow was dockerized, coded remotely inside the container.
+_________
+_________
 
 ##Stack##
 

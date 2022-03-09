@@ -1,56 +1,97 @@
 body{
-    background-color: #444c5d;
-    display: flex;
-    justify-content: center;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	font-size:16px;
+}
+div.wrapper{	
+	font-weight:500;
+	font-size:1rem;
+	min-width:40%;
+	max-width:60%;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:1%;
+	border-radius:3%;
+	background-color:lightgoldenrodyellow;
+	padding:3%;
 }
 
-.wrapper{
-    background-color: #c9bf93;
-    color:#2f1400;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+div.headline{
+	text-align:center;
+	background-color:aquamarine;
+	transform:skewX(-5deg);
+	padding:2px;
+	border-radius:5px;
+}
 
-    justify-content: center;
-    max-width: 60%;
-    min-width:40%;
-    padding:5%;
-    border-radius: 8px;
+div.headline p{	
+	color:#010101;	
+	padding-left:8px;
+	transform:skewX(+5deg);
+	font-size:1.4rem;
+	font-weight:500;
+	border-radius:4px;
+}
+
+
+p .action{
+	border:solid 1px;
+	border-radius:2px;
+	color:#6780ad;
+}
+
+p{
+	font-size:1rem;
+	font-weight:500;
+	line-height:30px;
+	color:#111A44;
+}
+
+.middle{
+	align-self:flex-start;
+	background-color:#e8eeef;
+	transform:skewX(+5deg);
+	transform:skewY(+5deg);
+	border-radius:10px;
+	margin-top:10px;
+	margin-left:auto;
+	margin-right:auto;
+	width:450px;
+	padding: 2px;
+}
+
+.middle p{
+	text-align: center;
+	transform:skewX(-5deg);
+	transform:skewY(-5deg);
 }
 
 a{
-    color:#152B55;
+	font-weight:600;
+	padding:4px;
+	text-decoration: none;
+	color:#222222;
 }
 
-.wrapper div{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
+li{
+	font-weight:600;
+	font-size:1.4rem;
 }
+
 .play{
-    display: flex;
-    background-color: #f8f1cf;
-    border-radius: 4px;
-    padding: 2%;
-    align-items: center;
-    justify-content: center;
+	width:100%;
+	align-items:center;
+	justify-content:center;
+	padding-bottom:4px;
+	padding-top:4px;
+	font-weight:600;
+	font-size:1.4rem;
+	border-radius:6px;
 }
 
-.docs{
-    display: flex;
-    background-color: #4E648E;
-    border-radius: 4px;
-    padding: 2%;
-    align-items: center;
-    justify-content: center;
-}
-
-.git{
-    display: flex;
-    background-color: #4E648E;
-    border-radius: 4px;
-    padding: 2%;
-    align-items: center;
-    justify-content: center;
-
+.content{
+	
+	margin:10px;
+	margin-top:30px;
 }

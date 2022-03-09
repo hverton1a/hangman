@@ -9,30 +9,36 @@
 </head>
 <body>
     <div class="wrapper">
-        <H1>Hangman API's Presentation.</H1>
-        <H2>The API</H2>
+        <H1>Hangman API<H1>
         <div>
-            <p>
-                Developed with python, using the <a href="https://https://fastapi.tiangolo.com/" >FastAPI</a> framework.
-            </p>
-            <p>There is a simple ReactJs available at Vercel, <a href="https://hangman-chi.vercel.app/">PLAY NOW!</a></p>
-            <p>For the Doc/Swagger <a href="https://horvat-projects.xyz/redoc">check here</a></p>
-            <p>Have a Look at <a href="https://github.com/hverton1a/hangman">Github</a></p>
-            <p>The words are scraped from the web and stored in a dockerized Mysql Server DB.
-            <p>Designed to be multi-language, storing original and sanitarized form, only dependant to be alphabetical.</p>
-            <p>Although only word in portuguese are available at the moment.</p>
-            <p>The Container whare deployed at a <a href ="https://cloud.google.com/">GCP - Google Cloud - </a> VPS instance, with docker-compose.</p>
-            <p>To Handle Tsl and serve HTTPS/WSS for secure connetions
-            Whas span up a <a href="https://www.nginx.com/" >NGINX</a> <a href="https://hub.docker.com/_/nginx">Docker container</a> as reverse proxy with a <a href="https://certbot.eff.org/">Certbot</a> <a href= "https://hub.docker.com/r/certbot/certbot">Docker container</a>
-            to handle with <a href="https://letsencrypt.org/">LetsEncript </a> the certificates.</p>
+            <div class="headline">
+				<p>
+					Developed with <a href="https://www.python.org/">Python</a>, using the <a href="https://https://fastapi.tiangolo.com/" >FastAPI</a> framework and <a href="https://www.docker.com/">Docker</a>.
+				</p>
+			</div>
+			<div class="middle">
+				<p>There is a simple ReactJs available at Vercel, <a class="action" href="https://hangman-chi.vercel.app/">PLAY NOW!</a></p>
+           
+				<p>Have a Look at <a class="action" href="https://github.com/hverton1a/hangman">Github</a> for the source code and files.</p>
+				<p><a class="action" href="https://horvat-projects.xyz/redoc">For the Doc/Swagger Here.</a></p>
+			</div>
+			<div class="content">
+				<p><span>T</span>he words are scraped from the web and stored in a dockerized Mysql Server DB.
+				<p>Designed to be multi-language, storing words in a original and sanitarized form, only dependant to be alphabetical.</p>
+				<p>Although only word in portuguese are available at the moment.</p>
+				<p>The Container were deployed at a <a href ="https://cloud.google.com/">GCP - Google Cloud - </a> VPS instance, with docker-compose.</p>
+				<p>To Handle Tsl and serve HTTPS/WSS for secure connetions
+				was spun up a <a href="https://www.nginx.com/" >NGINX</a> as a <a href="https://hub.docker.com/_/nginx">Docker container</a> as a reverse proxy with a <a href="https://certbot.eff.org/">Certbot</a> as a <a href= "https://hub.docker.com/r/certbot/certbot">Docker container</a>
+				to handle with <a href="https://letsencrypt.org/">LetsEncript </a> the certificates.</p>
+			</div>
             <p>The workflow was dockerized, coded remotely inside the container.</p>
             <p>Features: 
                 <ul>
-                    <li>Modular Word Scrapper
-                        <p>get the word from dictionary site or api
+                    <li>Modular Word Scraper
+                        <p>Get words from dictionary site or api on the web,
                         implemented with recipes, being flexible and ease to
-                        aquire word from another sources, just add the recipe and the scrape will deal with it.</p></li>
-                    <li>dockerized
+                        aquire/update the words from another sources, just add a recipe and the scraper will deal with it.</p></li>
+                    <li>Dockerized
                     <p>Speeding up the deployment and scale</p></li>
                     <li>Designed to be Alphabet dependant, but not language dependant
                         <p>The Word Table was designed to receive sanitarized
