@@ -1,6 +1,6 @@
 #**Hangman Game**#
 
-A game where you have to guess a hidden word.
+A hidden word guessing game.
 
 API and Frontend, with connection via websocket.
 _____

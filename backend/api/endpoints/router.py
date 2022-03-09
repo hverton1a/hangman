@@ -6,7 +6,6 @@ from api.endpoints.routes import word
 from api.endpoints.routes import api
 # TODO from api.endpoints.routes import user
 
-
 router = APIRouter()
 
 router.include_router(word.router, tags=["word"])
