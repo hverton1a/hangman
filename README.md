@@ -38,3 +38,5 @@ Deployed at Vercel
 
 Although it is with portuguese words, was implemented to manage all alphabetic languages. 
 Store the words with a table for the languages and another for the words. The word are stored in a sanitarized for playing and original writing to display.
+
+![Diagram](https://github.com/hverton1a/hangman/blob/production/backend/assets/diagram.png)
