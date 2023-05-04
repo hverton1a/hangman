@@ -5,9 +5,9 @@ A hidden word guessing game.
 API and Frontend, with connection via websocket.
 _____
 
-Check the [ API Page HERE ](https://horvat-projects.xyz).
+<del>Check the [ API Page HERE ](https://horvat-projects.xyz).</del>
 
-And Play it [HERE](https://hangman-chi.vercel.app/).
+<del>And Play it [HERE](https://hangman-chi.vercel.app/).</del>
 
 _________
 
